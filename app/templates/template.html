@@ -1,10 +1,24 @@
 <html>
     <head>
-        <title>{{ title }}</title>
+        <!--Условия-->
+            {% if title %}
+                <title>{{ title }} </title>
+            {% else %}
+                <title>Flask tutorial</title>
+            {% endif %}
     </head>
     <body>
         <h1>Дома сидит каждый, даже {{ user.username }}!</h1>
         Немного теории: <br>
         Функция render_template() вызывает механизм шаблонов Jinja2, который поставляется в комплекте с Flask. Jinja2 заменяет блоки {{'{{'}}...{{'}}'}} соответствующими значениями, заданными аргументами, указанными в вызове render_template(). Как f строках или JSX!
+
+        <!--Цикл-->
+        <h1>Дома сидят все:</h1>
+        <p>пример цикла</p>
+        <ul>
+            {% for name in homebodies %}
+            <li>{{name}}</li>
+            {% endfor %}
+        </ul>
     </body>
 </html>
