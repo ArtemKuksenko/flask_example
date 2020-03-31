@@ -1,0 +1,13 @@
+<html>
+    <head>
+        <!--Условия-->
+            {% if title %}
+                <title>{{ title }} </title>
+            {% else %}
+                <title>Flask tutorial</title>
+            {% endif %}
+    </head>
+    <body>
+        {% block content %}{% endblock %}
+    </body>
+</html>

@@ -1,13 +1,6 @@
-<html>
-    <head>
-        <!--Условия-->
-            {% if title %}
-                <title>{{ title }} </title>
-            {% else %}
-                <title>Flask tutorial</title>
-            {% endif %}
-    </head>
-    <body>
+{% extends "base.html" %} <!-- Наследование от шаблона --->
+
+{% block content %} <!-- Сам блок --->
         <h1>Дома сидит каждый, даже {{ user.username }}!</h1>
         Немного теории: <br>
         Функция render_template() вызывает механизм шаблонов Jinja2, который поставляется в комплекте с Flask. Jinja2 заменяет блоки {{'{{'}}...{{'}}'}} соответствующими значениями, заданными аргументами, указанными в вызове render_template(). Как f строках или JSX!
@@ -20,5 +13,4 @@
             <li>{{name}}</li>
             {% endfor %}
         </ul>
-    </body>
-</html>
+{% endblock %}
