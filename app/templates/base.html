@@ -1,13 +1,32 @@
 <html>
-    <head>
-        <!--Условия-->
-            {% if title %}
-                <title>{{ title }} </title>
-            {% else %}
-                <title>Flask tutorial</title>
-            {% endif %}
-    </head>
-    <body>
-        {% block content %}{% endblock %}
-    </body>
+<head>
+    <!--Условия-->
+    {% if title %}
+        <title>{{ title }} </title>
+    {% else %}
+        <title>Flask tutorial</title>
+    {% endif %}
+    <style>
+        textarea{
+            width: 500px;
+            height: 250px;
+        }
+        input{
+            width: 500px;
+        }
+        button{
+            width: 500px;
+        }
+        .new-post{
+            margin: 0 auto;
+            width: 520px;
+            background: black;
+            padding: 20px;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+{% block content %}{% endblock %}
+</body>
 </html>

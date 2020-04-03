@@ -27,10 +27,10 @@ def template_id(username):
     homebodies = ['По', 'Ляля', 'Тинки-Винки', 'Дипси']
     return render_template('template.html', title='Home', user=user, homebodies=homebodies)
 
-@app.route('/add', methods=['GET', 'POST'])
+@app.route('/create', methods=['GET', 'POST'])
 def add_post():
     form = LoginForm()
     if form.validate_on_submit():
         print(form.username)
         return redirect('/index')
-    return render_template('add_post.html', title='Sign In', form=form)
+    return render_template('add_post.html', title='+пост', form=form)
