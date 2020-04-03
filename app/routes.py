@@ -1,12 +1,11 @@
 # -*- coding: utf-8 -*-
 # routes — это разные URL-адреса, которые приложение реализует
-from flask import render_template # зависимость для шаблонов
+from flask import render_template, flash, redirect # зависимость для шаблонов
 from app import app
 
 from app.forms import LoginForm
 
-@app.route('/')
-@app.route('/index')
+@app.route('/hello_home')
 # приметивный базовый пример
 def index():
     return "HELLO HOME!"
@@ -28,7 +27,10 @@ def template_id(username):
     homebodies = ['По', 'Ляля', 'Тинки-Винки', 'Дипси']
     return render_template('template.html', title='Home', user=user, homebodies=homebodies)
 
-@app.route('/login')
-def login():
+@app.route('/add', methods=['GET', 'POST'])
+def add_post():
     form = LoginForm()
-    return render_template('login.html', title='Sign In', form=form)
+    if form.validate_on_submit():
+        print(form.username)
+        return redirect('/index')
+    return render_template('add_post.html', title='Sign In', form=form)
