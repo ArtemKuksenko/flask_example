@@ -1,0 +1,18 @@
+{% extends "base.html" %} <!-- Наследование от шаблона --->
+
+{% block content %} <!-- Сам блок --->
+    {% for p in posts %}
+        <div class="post">
+            <h1>{{ p.title }}</h1>
+            {{ p.text }}<br>
+            Автор: {{ p.name_user }}
+            <div class="post-container">
+                {% for c in p.comments %}
+                    <div class="comment">
+                    {{ c.comment }}
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}
