@@ -3,6 +3,8 @@
 from flask import render_template # зависимость для шаблонов
 from app import app
 
+from app.forms import LoginForm
+
 @app.route('/')
 @app.route('/index')
 # приметивный базовый пример
@@ -25,3 +27,8 @@ def template_id(username):
     user = {'username': username}
     homebodies = ['По', 'Ляля', 'Тинки-Винки', 'Дипси']
     return render_template('template.html', title='Home', user=user, homebodies=homebodies)
+
+@app.route('/login')
+def login():
+    form = LoginForm()
+    return render_template('login.html', title='Sign In', form=form)
