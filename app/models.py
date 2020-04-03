@@ -7,7 +7,7 @@ class User(db.Model):
     post = db.relationship('Post', backref='author', lazy='dynamic')
 
     def __repr__(self):
-        return '<User %r' % (self.name_user)
+        return '<User {}'.format(self.name_user)
 
 class Post(db.Model):
     __tablename__ = 'post'
@@ -18,7 +18,7 @@ class Post(db.Model):
     comment = db.relationship('Comment', backref='comment', lazy='dynamic')
 
     def __repr__(self):
-        return 'Post %r' % (self.text)
+        return 'Post {}'.format(self.text)
 
 class Comment(db.Model):
     __tablename__ = 'comment'
@@ -27,4 +27,4 @@ class Comment(db.Model):
     id_post = db.Column(db.Integer, db.ForeignKey('post.id_post'))
 
     def __repr__(self):
-        return 'Comment %r' % (self.comment)
+        return 'Comment {}'.format(self.comment)
