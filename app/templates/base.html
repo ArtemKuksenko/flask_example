@@ -1,13 +1,53 @@
 <html>
-    <head>
-        <!--Условия-->
-            {% if title %}
-                <title>{{ title }} </title>
-            {% else %}
-                <title>Flask tutorial</title>
-            {% endif %}
-    </head>
-    <body>
-        {% block content %}{% endblock %}
-    </body>
+<head>
+    <!--Условия-->
+    {% if title %}
+        <title>{{ title }} </title>
+    {% else %}
+        <title>Flask tutorial</title>
+    {% endif %}
+    <style>
+        textarea{
+            width: 500px;
+            height: 250px;
+        }
+        input{
+            width: 500px;
+        }
+        button{
+            width: 500px;
+        }
+        body{
+            background: #444d5c;
+        }
+        .new-post{
+            margin: 0 auto;
+            width: 520px;
+            background: #4e0063;
+            padding: 20px;
+            color: white;
+        }
+        .post-container{
+            overflow: scroll;
+            height: 150px;
+        }
+        .post{
+            margin: 10px auto;
+            width: 520px;
+            background: #c43b08;
+            padding: 20px;
+            color: #200772;
+        }
+        .comment{
+            margin: 5px auto;
+            width: 450px;
+            background: #1fcecb;
+            {#https://pikabu.ru/story/tsvet_yaits_stranstvuyushchego_drozda_4168563#}
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+{% block content %}{% endblock %}
+</body>
 </html>
