@@ -9,9 +9,19 @@
             <div class="post-container">
                 {% for c in p.comments %}
                     <div class="comment">
-                    {{ c.comment }}
+                        {{ c.comment }}
                     </div>
                 {% endfor %}
+            </div>
+            <div class="post">
+                <form method="post">
+                    {{ p.form.hidden_tag() }}
+                    <p>
+                        {{ p.form.comment(size=32) }}
+                    </p>
+
+                    <p>{{ p.form.submit() }}</p>
+                </form>
             </div>
         </div>
     {% endfor %}

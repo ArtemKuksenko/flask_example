@@ -1,14 +1,16 @@
 # -*- coding: utf-8 -*-
 # routes — это разные URL-адреса, которые приложение реализует
-from flask import render_template, flash, redirect # зависимость для шаблонов
+from flask import render_template, flash, redirect  # зависимость для шаблонов
 from app import app
 
-from app.forms import LoginForm
+from app.forms import AddPostForm, AddCommentForm
+
 
 @app.route('/hello_home')
 # приметивный базовый пример
 def hello_home():
     return "HELLO HOME!"
+
 
 @app.route('/template')
 # шаблон, ссылка с примером ниже
@@ -27,17 +29,26 @@ def template_id(username):
     homebodies = ['По', 'Ляля', 'Тинки-Винки', 'Дипси']
     return render_template('template.html', title='Home', user=user, homebodies=homebodies)
 
-@app.route('/create', methods=['GET', 'POST'])
+
+@app.route('/create', methods={'GET', 'POST'})
 def add_post():
-    form = LoginForm()
+    form = AddPostForm()
     if form.validate_on_submit():
-        print(form.username)
+        print(form.data.get('name_user'))
         return redirect('/index')
     return render_template('add_post.html', title='+пост', form=form)
 
-@app.route('/')
-@app.route('/index')
+
+@app.route('/', methods=['GET', 'POST'])
+@app.route('/index', methods=['GET', 'POST'])
 def index():
+    form = AddCommentForm()
+
+    if form.validate_on_submit():
+        print(form.data.get('id'))
+        print(form.data.get('comment'))
+        return redirect('/index')
+
     posts = [
         {
             'id': 0,
@@ -53,7 +64,8 @@ def index():
                 {'comment': 'до слез'},
                 {'comment': 'брат за Барата'},
                 {'comment': 'брат за Мурата'},
-            ]
+            ],
+            'form': form
         },
         {
             'id': 1,
@@ -69,7 +81,11 @@ def index():
                 {'comment': 'до слез2'},
                 {'comment': 'брат за Барата2'},
                 {'comment': 'брат за Мурата2'},
-            ]
+            ],
+            'form': form
         },
     ]
-    return render_template('index.html', title='Home', posts=posts)
+    for p in posts:
+        p['form'].data.update({'id': p['id']})
+
+    return render_template('index.html', title='Home', posts=posts, form=form)
