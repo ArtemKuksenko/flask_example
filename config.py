@@ -10,3 +10,5 @@ class Config(object):
     #Alembic - инфраструктура миграции
     #flask db init - команда для создания папки для миграции
     #flask db migrate -m 'flask table' - команда для переноса БД, которая генерирует автоматические миграции
+    #flask db upgrade - выполнит новые сценарии миграции
+    #flask db downgrade - отменяет последние миграции
