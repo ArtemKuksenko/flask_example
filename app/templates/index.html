@@ -14,8 +14,8 @@
                 {% endfor %}
             </div>
             <div class="post">
-                <form method="post">
-                    {{ p.form.hidden_tag() }}
+                <form method="post" id = "qwe">
+                    {{ p.form.csrf_token() }}
                     <p>
                         {{ p.form.comment(size=32) }}
                     </p>

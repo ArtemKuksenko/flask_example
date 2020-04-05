@@ -10,4 +10,5 @@ class AddPostForm(FlaskForm):
 
 class AddCommentForm(FlaskForm):
     comment = StringField('None', validators=[DataRequired()])
+    id = IntegerField()
     submit = SubmitField('Отправить')

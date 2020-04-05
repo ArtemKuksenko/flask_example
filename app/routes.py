@@ -65,7 +65,7 @@ def index():
                 {'comment': 'брат за Барата'},
                 {'comment': 'брат за Мурата'},
             ],
-            'form': form
+            'form': AddCommentForm()
         },
         {
             'id': 1,
@@ -82,10 +82,11 @@ def index():
                 {'comment': 'брат за Барата2'},
                 {'comment': 'брат за Мурата2'},
             ],
-            'form': form
+            'form': AddCommentForm()
         },
     ]
     for p in posts:
-        p['form'].data.update({'id': p['id']})
+        p['form'].id.default = p['id']
+        p['form'].process()
 
-    return render_template('index.html', title='Home', posts=posts, form=form)
+    return render_template('index.html', title='Home', posts=posts)
