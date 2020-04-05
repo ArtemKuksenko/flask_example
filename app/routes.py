@@ -4,6 +4,7 @@ from flask import render_template, flash, redirect  # зависимость д�
 from app import app
 
 from app.forms import AddPostForm, AddCommentForm
+from app.views import add_post
 
 
 @app.route('/hello_home')
@@ -31,12 +32,12 @@ def template_id(username):
 
 
 @app.route('/create', methods=['GET', 'POST'])
-def add_post():
+def add_post_route():
     form = AddPostForm()
     if form.validate_on_submit():
-        BaseController.add_post(name_user=form.data.get('name_user'),
-                                title=form.data.get('title'),
-                                text=form.data.get('text'))
+        add_post(name_user=form.data.get('name_user'),
+                 title=form.data.get('title'),
+                 text=form.data.get('text'))
         print(form.data.get('name_user'))
         return redirect('/index')
     return render_template('add_post.html', title='+пост', form=form)
