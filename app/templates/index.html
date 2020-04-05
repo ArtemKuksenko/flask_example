@@ -13,9 +13,10 @@
                     </div>
                 {% endfor %}
             </div>
-            <div class="post">
-                <form method="post" id = "qwe">
+            <div class="comment-box">
+                <form method="post" class="comment-box-form">
                     {{ p.form.csrf_token() }}
+                    {{ p.form.id }}
                     <p>
                         {{ p.form.comment(size=32) }}
                     </p>

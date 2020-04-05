@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, SubmitField, TextAreaField, IntegerField
+from wtforms import StringField, SubmitField, TextAreaField, HiddenField
 from wtforms.validators import DataRequired
 
 class AddPostForm(FlaskForm):
@@ -10,5 +10,5 @@ class AddPostForm(FlaskForm):
 
 class AddCommentForm(FlaskForm):
     comment = StringField('None', validators=[DataRequired()])
-    id = IntegerField()
+    id = HiddenField()
     submit = SubmitField('Отправить')
