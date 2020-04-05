@@ -35,6 +35,9 @@ def template_id(username):
 def add_post():
     form = AddPostForm()
     if form.validate_on_submit():
+        BaseController.add_post(name_user=form.data.get('name_user'),
+                                title=form.data.get('title'),
+                                text=form.data.get('text'))
         print(form.data.get('name_user'))
         return redirect('/index')
     return render_template('add_post.html', title='+пост', form=form)

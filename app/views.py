@@ -4,6 +4,9 @@ from app.models import User, Post, Comment
 
 class BaseController():
 
+    def __init__(self):
+        pass
+
     def add_post(self, **kwargs):
         user = User.query.filter_by(name_user=kwargs.get('name_user')).first()
         if user is None:
