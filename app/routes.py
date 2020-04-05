@@ -2,7 +2,6 @@
 # routes — это разные URL-адреса, которые приложение реализует
 from flask import render_template, flash, redirect  # зависимость для шаблонов
 from app import app
-from app.views import BaseController
 
 from app.forms import AddPostForm, AddCommentForm
 
@@ -31,7 +30,7 @@ def template_id(username):
     return render_template('template.html', title='Home', user=user, homebodies=homebodies)
 
 
-@app.route('/create', methods={'GET', 'POST'})
+@app.route('/create', methods=['GET', 'POST'])
 def add_post():
     form = AddPostForm()
     if form.validate_on_submit():
@@ -55,9 +54,9 @@ def index():
             'id': 0,
             'name_user': 'По',
             'title': 'Жизнь дома',
-            'text': """Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut 
+            'text': """Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
                        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                        nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate 
+                        nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
                         velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident
                         , sunt in culpa qui officia deserunt mollit anim id est laborum.""",
             'comments': [
@@ -72,9 +71,9 @@ def index():
             'id': 1,
             'name_user': 'По2',
             'title': 'Жизнь дома2',
-            'text': """2Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut 
+            'text': """2Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
                            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                            nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate 
+                            nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
                             velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident
                             , sunt in culpa qui officia deserunt mollit anim id est laborum.""",
             'comments': [
