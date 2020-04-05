@@ -2,6 +2,7 @@
 # routes — это разные URL-адреса, которые приложение реализует
 from flask import render_template, flash, redirect  # зависимость для шаблонов
 from app import app
+from app.views import BaseController
 
 from app.forms import AddPostForm, AddCommentForm
 
