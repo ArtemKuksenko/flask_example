@@ -3,7 +3,17 @@
 {% block content %} <!-- Сам блок --->
     {% for p in posts %}
         <div class="post">
-            <h1>{{ p.title }}</h1>
+            <h1>{{ p.title }}
+                <form method="post" style="width: 50px" >
+                    {{ p.form.csrf_token() }}
+                    {{ p.edit.id }}
+                    {{ p.edit.submit() }}
+                </form>
+            </h1>
+{#            <div width = "30px">#}
+
+
+{#            </div>#}
             {{ p.text }}<br>
             Автор: {{ p.name_user }}
             <div class="post-container">

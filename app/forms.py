@@ -12,3 +12,7 @@ class AddCommentForm(FlaskForm):
     comment = StringField('None', validators=[DataRequired()])
     id = HiddenField()
     submit = SubmitField('Отправить')
+
+class EditPostForm(FlaskForm):
+    id = HiddenField()
+    submit = SubmitField('ред.')

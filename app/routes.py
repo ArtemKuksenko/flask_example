@@ -3,7 +3,7 @@
 from flask import render_template, flash, redirect  # зависимость для шаблонов
 from app import app
 
-from app.forms import AddPostForm, AddCommentForm
+from app.forms import AddPostForm, AddCommentForm, EditPostForm
 from app.views import add_post
 
 
@@ -54,6 +54,8 @@ def index():
         print(form.data.get('comment'))
         return redirect('/index')
 
+    edit = EditPostForm()
+
     posts = [
         {
             'id': 0,
@@ -70,7 +72,6 @@ def index():
                 {'comment': 'брат за Барата'},
                 {'comment': 'брат за Мурата'},
             ],
-            'form': AddCommentForm()
         },
         {
             'id': 1,
@@ -87,12 +88,15 @@ def index():
                 {'comment': 'брат за Барата2'},
                 {'comment': 'брат за Мурата2'},
             ],
-            'form': AddCommentForm()
         },
     ]
     for p in posts:
+        p['form'] = AddCommentForm()
         p['form'].id.default = p['id']
         p['form'].process()
+        p['edit'] = EditPostForm()
+        p['edit'].id.default = p['id']
+        p['edit'].process()
 
     return render_template('index.html', title='Home', posts=posts)
 
