@@ -16,6 +16,7 @@
             <div class="post">
                 <form method="post" id = "qwe">
                     {{ p.form.csrf_token() }}
+                    {{ p.form.id }}
                     <p>
                         {{ p.form.comment(size=32) }}
                     </p>
