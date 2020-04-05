@@ -39,5 +39,6 @@ class Comment(db.Model):
     def __repr__(self):
         return 'Comment {}'.format(self.comment)
 
+    @property
     def get_id(self):
         return self.id_comment

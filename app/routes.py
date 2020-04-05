@@ -31,7 +31,7 @@ def template_id(username):
     return render_template('template.html', title='Home', user=user, homebodies=homebodies)
 
 
-@app.route('/create', methods={'GET', 'POST'})
+@app.route('/create', methods=['GET', 'POST'])
 def add_post():
     form = AddPostForm()
     if form.validate_on_submit():
