@@ -10,4 +10,14 @@ class BaseController():
         if user is None:
             user = User(name_user=kwargs.get('name_user'))
             session.add(user)
-            id_user = User.query.filter_by(name_user=kwargs.get('name_user')).first()
+            id_user = User.query.filter_by(name_user=kwargs.get('name_user')).get_id()
+        else:
+            id_user = user.get_id()
+
+        post = Post(id_user=id_user,
+                    text=kwargs.get('text'),
+                    title=kwargs.get('title'))
+        db.session.add(post)
+        db.commit()
+        return True
+

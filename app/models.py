@@ -9,6 +9,11 @@ class User(db.Model):
     def __repr__(self):
         return '<User {}'.format(self.name_user)
 
+    @property
+    def get_id(self):
+        return self.id_user
+
+
 class Post(db.Model):
     __tablename__ = 'post'
     id_post = db.Column(db.Integer, primary_key=True)
@@ -20,6 +25,11 @@ class Post(db.Model):
     def __repr__(self):
         return 'Post {}'.format(self.text)
 
+    @property
+    def get_id(self):
+        return self.id_post
+
+
 class Comment(db.Model):
     __tablename__ = 'comment'
     id_comment = db.Column(db.Integer, primary_key=True)
@@ -28,3 +38,6 @@ class Comment(db.Model):
 
     def __repr__(self):
         return 'Comment {}'.format(self.comment)
+
+    def get_id(self):
+        return self.id_comment

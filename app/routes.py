@@ -2,6 +2,7 @@
 # routes — это разные URL-адреса, которые приложение реализует
 from flask import render_template, flash, redirect # зависимость для шаблонов
 from app import app
+from app.views import BaseController
 
 from app.forms import LoginForm
 
@@ -31,6 +32,7 @@ def template_id(username):
 def add_post():
     form = LoginForm()
     if form.validate_on_submit():
+        # BaseController.add_post()
         print(form.username)
         return redirect('/index')
     return render_template('add_post.html', title='+пост', form=form)
