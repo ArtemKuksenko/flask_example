@@ -1,5 +1,6 @@
 <html>
 <head>
+    {# все что не обрабатывает jinja кладем в папочку статик, откуда подтягиваем, след. образом:  #}
     <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
     <!--Условия-->
     {% if title %}
