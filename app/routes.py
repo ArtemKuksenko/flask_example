@@ -31,6 +31,7 @@ def template_id(username):
     return render_template('template.html', title='Home', user=user, homebodies=homebodies)
 
 
+
 @app.route('/create', methods=['GET', 'POST'])
 def add_post_route():
     form = AddPostForm()
@@ -94,3 +95,5 @@ def index():
         p['form'].process()
 
     return render_template('index.html', title='Home', posts=posts)
+
+

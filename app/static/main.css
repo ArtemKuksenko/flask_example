@@ -43,3 +43,14 @@ body{
     padding: 0px;
     color: #200772;
 }
+
+.error{
+    margin: 0 auto;
+    width: 800px;
+    background: #4e0063;
+    padding: 20px;
+    color: white;
+}
+img {
+    width: 100%;
+}
