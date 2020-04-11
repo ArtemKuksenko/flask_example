@@ -13,6 +13,11 @@ class AddCommentForm(FlaskForm):
     id = HiddenField()
     submit = SubmitField('Отправить')
 
+class EditPostButton(FlaskForm):
+    id = HiddenField()
+    submit = SubmitField('Ред.')
+
 class EditPostForm(FlaskForm):
     id = HiddenField()
-    submit = SubmitField('ред.')
+    text = TextAreaField('Пост', validators=[DataRequired()])
+    submit = SubmitField('Ред.')

@@ -3,7 +3,7 @@
 from flask import render_template, flash, redirect  # зависимость для шаблонов
 from app import app
 
-from app.forms import AddPostForm, AddCommentForm, EditPostForm
+from app.forms import AddPostForm, AddCommentForm, EditPostButton, EditPostForm
 from app.views import add_post
 
 
@@ -30,7 +30,12 @@ def template_id(username):
     homebodies = ['По', 'Ляля', 'Тинки-Винки', 'Дипси']
     return render_template('template.html', title='Home', user=user, homebodies=homebodies)
 
-
+@app.route('/edit/<id>', methods=['GET', 'POST'])
+def edit_post(id):
+    form = EditPostForm()
+    if form.validate_on_submit():
+        return redirect('/index')
+    return render_template('edit_post.html', title='ред.пост', form=form)
 
 @app.route('/create', methods=['GET', 'POST'])
 def add_post_route():
@@ -54,7 +59,9 @@ def index():
         print(form.data.get('comment'))
         return redirect('/index')
 
-    edit = EditPostForm()
+    edit = EditPostButton()
+    if edit.validate_on_submit():
+        return redirect(f"/edit/{edit.data.get('id')}")
 
     posts = [
         {
@@ -94,7 +101,7 @@ def index():
         p['form'] = AddCommentForm()
         p['form'].id.default = p['id']
         p['form'].process()
-        p['edit'] = EditPostForm()
+        p['edit'] = EditPostButton()
         p['edit'].id.default = p['id']
         p['edit'].process()
 

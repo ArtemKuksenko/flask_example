@@ -18,6 +18,13 @@ body{
     padding: 20px;
     color: white;
 }
+.edit-post{
+    margin: 0 auto;
+    width: 520px;
+    background: #633000;
+    padding: 20px;
+    color: white;
+}
 .post-container{
     overflow-y: scroll;
     height: 150px;
