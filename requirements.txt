@@ -1,5 +1,8 @@
 # upgrade pip (for python 3.8)  - sudo python3.8 -m pip install --upgrade pip
 #install requirements (for python3.8) - sudo python3.8 -m pip install -r requirements.txt
+#если появится ошибка No module named '_sqlite3' при каких-либо действиях с бд, выполнить эти команды:
+#sudo apt-get install -y make build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev xz-utils tk-dev
+#(из папки с питоном) ./configure --enable-loadable-sqlite-extensions && make && sudo make install
 
 Flask==1.1.1
 Flask-SQLAlchemy==2.4.1
@@ -9,11 +12,11 @@ MarkupSafe==1.1.1
 SQLAlchemy==1.3.15
 flask-migrate==2.5.3
 flask-wtf==0.14.3
-WTForms-2.2.1
-Werkzeug-1.0.1
-alembic-1.4.2
-click-7.1.1
-python-dateutil-2.8.1
-python-editor-1.0.4
-six-1.14.0
+WTForms==2.2.1
+Werkzeug==1.0.1
+alembic==1.4.2
+click==7.1.1
+python-dateutil==2.8.1
+python-editor==1.0.4
+six==1.14.0
 

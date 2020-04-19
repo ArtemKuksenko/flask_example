@@ -4,7 +4,7 @@ from flask import render_template, flash, redirect  # зависимость д�
 from app import app
 
 from app.forms import AddPostForm, AddCommentForm, EditPostButton, EditPostForm
-from app.views import add_post
+from app.views import add_post, post_edit
 
 
 @app.route('/hello_home')
@@ -34,6 +34,8 @@ def template_id(username):
 def edit_post(id):
     form = EditPostForm()
     if form.validate_on_submit():
+        post_edit(id_post=id,
+                  text=form.data.get('text'))
         return redirect('/index')
     return render_template('edit_post.html', title='ред.пост', form=form)
 
