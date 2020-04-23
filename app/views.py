@@ -2,15 +2,19 @@ from app import db
 from app.models import User, Post, Comment
 
 
+def get_user(name_user):
+    return User.query.filter_by(name_user=name_user).first()
+
+
 def add_post(name_user, text, title):
     """
     Добавление поста
     """
-    user = User.query.filter_by(name_user=name_user).first()
+    user = get_user(name_user=name_user)
     if user is None:
         user = User(name_user=name_user)
         db.session.add(user)
-        id_user = User.query.filter_by(name_user=name_user).first().get_id
+        id_user = get_user(name_user=name_user).get_id
     else:
         id_user = user.get_id()
 
