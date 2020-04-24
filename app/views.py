@@ -6,6 +6,10 @@ def get_user(name_user):
     return User.query.filter_by(name_user=name_user).first()
 
 
+def get_all_user():
+    return User.query.all()
+
+
 def add_post(name_user, text, title):
     """
     Добавление поста

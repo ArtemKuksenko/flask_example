@@ -1,18 +1,23 @@
 from unittest import TestCase
-from unittest.mock import patch, Mock
+from unittest.mock import patch
+
 
 class TestViews(TestCase):
 
-    def test_add_post(self):
-        from app.views import add_post
+    @patch('app.views.get_user')
+    def test_get_user(self, mock_user):
 
-        add_post_mock = Mock()
-        add_post_mock.get_user.return_value = [
+        views = mock_user()
+        views.get_user.return_value = [
             {
                 'id_user': 1,
                 'name_user': 'lean'
             }
         ]
+
+        user = views.get_user('lean')
+        self.assertIsNotNone(user)
+        self.assertIsInstance(user[0], dict)
 
 
 
