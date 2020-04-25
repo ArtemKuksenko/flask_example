@@ -18,9 +18,9 @@ def add_post(name_user, text, title):
     if user is None:
         user = User(name_user=name_user)
         db.session.add(user)
-        id_user = get_user(name_user=name_user).get_id
+        id_user = get_user(name_user=name_user).get_id_user
     else:
-        id_user = user.get_id()
+        id_user = user.get_id_user
 
     post = Post(id_user=id_user,
                 text=text,
@@ -49,7 +49,7 @@ def get_all_post():
     res = []
 
     for post in posts:
-        com_for_post = list(filter(lambda x: x.get_id_post == post[0].get_id_post, comments))
+        com_for_post = list(filter(lambda x: x.get_id_post == post[0].get_id_post(), comments))
         d = {
             'id': post[0].get_id_post,
             'title': post[0].get_title,
