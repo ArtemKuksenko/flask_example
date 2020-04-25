@@ -64,3 +64,17 @@ def get_all_post():
     return res
 
 
+def add_comment_to_post(id_post, comment=None):
+    """
+    Добавление коментария
+    """
+    if not comment:
+        return False
+
+    com = Comment(comment=comment,
+                  id_post=id_post)
+    db.session.add(com)
+    db.session.commit()
+    return True
+
+
