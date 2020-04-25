@@ -9,14 +9,15 @@ button{
     width: 100%;
 }
 body{
-    background: #444d5c;
+    background: #89A7CE;
 }
 .new-post{
     margin: 0 auto;
     width: 520px;
-    background: #4e0063;
+    background: #B291A7;
+    /*background: #db5a7e;*/
     padding: 20px;
-    color: white;
+    color: #030d3d;
 }
 .edit-post{
     margin: 0 auto;
@@ -32,9 +33,9 @@ body{
 .post{
     margin: 10px auto;
     width: 520px;
-    background: #c43b08;
+    background: #542C3D;
     padding: 20px;
-    color: #200772;
+    color: #E0AAc7;
 }
 .comment{
     margin: 5px auto;
@@ -42,11 +43,12 @@ body{
     background: #1fcecb;
     /*#https://pikabu.ru/story/tsvet_yaits_stranstvuyushchego_drozda_4168563*/
     padding: 20px;
+    color: #542C3D;
 }
 .comment-box{
     margin: 0px auto;
     width: 520px;
-    background: #c43b08;
+    background: #E0AAc7;
     padding: 0px;
     color: #200772;
 }
