@@ -49,7 +49,7 @@ def get_all_post():
     res = []
 
     for post in posts:
-        com_for_post = list(filter(lambda x: x.get_id_post == post[0].get_id_post(), comments))
+        com_for_post = list(filter(lambda x: x.get_id_post == post[0].get_id_post, comments))
         d = {
             'id': post[0].get_id_post,
             'title': post[0].get_title,
