@@ -4,7 +4,7 @@ from flask import render_template, flash, redirect  # зависимость д�
 from app import app
 
 from app.forms import AddPostForm, AddCommentForm, EditPostButton, EditPostForm
-from app.views import add_post, post_edit
+from app.views import add_post, post_edit, get_all_post, add_comment_to_post
 
 
 @app.route('/hello_home')
@@ -57,48 +57,16 @@ def index():
     form = AddCommentForm()
 
     if form.validate_on_submit():
-        print(form.data.get('id'))
-        print(form.data.get('comment'))
+        add_comment_to_post(id_post=form.data.get('id'),
+                            comment=form.data.get('comment'))
         return redirect('/index')
 
     edit = EditPostButton()
     if edit.validate_on_submit():
         return redirect(f"/edit/{edit.data.get('id')}")
 
-    posts = [
-        {
-            'id': 0,
-            'name_user': 'По',
-            'title': 'Жизнь дома',
-            'text': """Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                       labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                        nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-                        velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident
-                        , sunt in culpa qui officia deserunt mollit anim id est laborum.""",
-            'comments': [
-                {'comment': 'в само сердечко'},
-                {'comment': 'до слез'},
-                {'comment': 'брат за Барата'},
-                {'comment': 'брат за Мурата'},
-            ],
-        },
-        {
-            'id': 1,
-            'name_user': 'По2',
-            'title': 'Жизнь дома2',
-            'text': """2Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                           labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                            nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-                            velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident
-                            , sunt in culpa qui officia deserunt mollit anim id est laborum.""",
-            'comments': [
-                {'comment': 'в само сердечко2'},
-                {'comment': 'до слез2'},
-                {'comment': 'брат за Барата2'},
-                {'comment': 'брат за Мурата2'},
-            ],
-        },
-    ]
+    posts = get_all_post()
+
     for p in posts:
         p['form'] = AddCommentForm()
         p['form'].id.default = p['id']
