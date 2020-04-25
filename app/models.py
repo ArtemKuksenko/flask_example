@@ -16,6 +16,10 @@ class User(db.Model):
     def get_id(self):
         return self.id_user
 
+    @property
+    def get_name(self):
+        return self.name_user
+
 
 class Post(db.Model):
     __tablename__ = 'post'
@@ -37,6 +41,10 @@ class Post(db.Model):
     def get_id(self):
         return self.id_post
 
+    @property
+    def get_id_user(self):
+        return self.id_user
+
 
 class Comment(db.Model):
     __tablename__ = 'comment'
@@ -54,3 +62,7 @@ class Comment(db.Model):
     @property
     def get_id(self):
         return self.id_comment
+
+    @property
+    def get_id_post(self):
+        return self.id_post

@@ -35,6 +35,7 @@ def post_edit(id_post, text):
     Редактирование поста
     """
     Post.query.filter_by(id_post=id_post).update({'text': (text)})
+    res = get_all_post()
     db.session.commit()
     return True
 
@@ -43,20 +44,23 @@ def get_all_post():
     """
     Получение всех постов
     """
-    posts = db.session.query(Post, User).outerjoin(User, User.id_user == Post.id_user).all()
+    posts = db.session.query(Post, User).join(User, User.id_user == Post.id_user).all()
+    comments = db.session.query(Comment).all()
 
     res = []
-    d = {}
-    for post in posts:
-        res.append({
-            'id': row[0].get('id_post'),
-            'title': row[0].get('title'),
-            'text': row[0].get('text'),
-            'name_user': row[1].get('name_user'),
-            'comments': [{
 
-            }]
-        })
+    for post in posts:
+        com_for_post = list(filter(lambda x: x['id_post'] == post[0].get_id, comments))
+        d = {
+            'id': post[0].get('id_post'),
+            'title': post[0].get('title'),
+            'text': post[0].get('text'),
+            'name_user': post['author'].get('name_user'),
+            'comments': [{
+                'comment': p.get('comment')} for p in com_for_post
+            ]
+        }
+        res.append(d)
 
     return True
 

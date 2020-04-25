@@ -19,4 +19,6 @@ click==7.1.1
 python-dateutil==2.8.1
 python-editor==1.0.4
 six==1.14.0
+# для тестирования
+mock
 
