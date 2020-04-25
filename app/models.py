@@ -13,12 +13,16 @@ class User(db.Model):
         return '<User {}'.format(self.name_user)
 
     @property
-    def get_id(self):
+    def get_id_user(self):
         return self.id_user
 
     @property
-    def get_name(self):
+    def get_name_user(self):
         return self.name_user
+
+    @property
+    def get_post(self):
+        return self.post
 
 
 class Post(db.Model):
@@ -38,12 +42,24 @@ class Post(db.Model):
         return 'Post {}'.format(self.text)
 
     @property
-    def get_id(self):
+    def get_id_post(self):
         return self.id_post
 
     @property
     def get_id_user(self):
         return self.id_user
+
+    @property
+    def get_text(self):
+        return self.text
+
+    @property
+    def get_title(self):
+        return self.title
+
+    @property
+    def get_comment(self):
+        return self.comment
 
 
 class Comment(db.Model):
@@ -60,9 +76,13 @@ class Comment(db.Model):
         return 'Comment {}'.format(self.comment)
 
     @property
-    def get_id(self):
+    def get_id_comment(self):
         return self.id_comment
 
     @property
     def get_id_post(self):
         return self.id_post
+
+    @property
+    def get_comment(self):
+        return self.comment
